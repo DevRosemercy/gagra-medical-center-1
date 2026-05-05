@@ -9,19 +9,254 @@
   <meta name="author" content="Gagra Medical Centre">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.gagramedical.co.ke/">
-  <link rel="icon" type="image/png" href="assets/images/logo.png">
 
   <meta property="og:title" content="Gagra Medical Centre | Quality Healthcare | SHA Accredited">
-  <meta property="og:description" content="Consultations, Home-Based Care, MCH/FP, Pharmacy, Emergency Response. M-Pesa Till: 3046560">
-  <meta property="og:image" content="assets/images/logo.png">
+  <meta property="og:description" content="Consultations, Home-Based Care, MCH/FP, Pharmacy, Emergency Response. Located at Gagra Madiany Junction. M-Pesa Till: 3046560">
+  <meta property="og:image" content="https://i.ibb.co/fYLbDv5r/gagra-medical-logo.png">
   <meta property="og:url" content="https://www.gagramedical.co.ke">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    * { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+
+    :root {
+      --primary: #0369a1;
+      --primary-dark: #0284c7;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #1e293b;
+      --border-color: #e2e8f0;
+    }
+
+    body.dark {
+      --primary: #38bdf8;
+      --bg-body: #0f172a;
+      --bg-card: #1e293b;
+      --text-primary: #f1f5f9;
+      --border-color: #334155;
+    }
+
+    body { background-color: var(--bg-body); color: var(--text-primary); transition: all 0.3s ease; }
+    .card-bg { background-color: var(--bg-card); border: 1px solid var(--border-color); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+      transition: all 0.3s ease;
+      color: white;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(3,105,161,0.35); }
+
+    .btn-emergency { background: #dc2626; color: white; animation: pulse-ring 1.5s infinite; }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+
+    .wa-float { animation: pulse-green 2s infinite; }
+    @keyframes pulse-green {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { transform: scale(1); }
+    }
+
+    .ambulance-animate { animation: ambulanceMove 1s ease-in-out infinite; }
+    @keyframes ambulanceMove {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* FULLSCREEN HERO SLIDESHOW - Like KNH Website */
+    .hero-fullscreen {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    /* Dark overlay for text readability */
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,20,40,0.75) 0%, rgba(0,40,60,0.65) 100%);
+      z-index: 1;
+    }
+
+    /* Hero Content Overlay - Text appears INSIDE the image */
+    .hero-content-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-buttons {
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation Dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 10;
+    }
+
+    .hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .hero-dot.active, .hero-dot:hover {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    /* Navigation Arrows */
+    .hero-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 10;
+    }
+
+    .hero-nav:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .hero-prev { left: 2rem; }
+    .hero-next { right: 2rem; }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      z-index: 10;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .img-zoom { transition: transform 0.5s ease, box-shadow 0.3s ease; }
+    .img-zoom:hover { transform: scale(1.03); box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2); }
+
+    .service-card, .blog-card, .team-card { transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .service-card:hover, .blog-card:hover, .team-card:hover { transform: translateY(-8px); box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2); }
+
+    .chat-message-user { background: linear-gradient(135deg, #0369a1, #0284c7); color: white; }
+    .chat-message-bot { background-color: #e2e8f0; color: #1e293b; }
+    body.dark .chat-message-bot { background-color: #334155; color: #f1f5f9; }
+
+    .toast-notification {
+      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+      background: #1e293b; color: white; padding: 12px 24px; border-radius: 50px;
+      z-index: 1000; font-size: 14px; animation: fadeUpOut 3s ease-in-out forwards;
+    }
+    @keyframes fadeUpOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-20px); visibility: hidden; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.9rem; }
+      .hero-nav { width: 36px; height: 36px; font-size: 1rem; }
+      .hero-prev { left: 1rem; }
+      .hero-next { right: 1rem; }
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+  </style>
 </head>
 <body class="transition-colors duration-300">
 
@@ -30,9 +265,9 @@
 
   <!-- FLOATING ACTION BUTTONS -->
   <div class="fixed bottom-24 right-6 flex flex-col gap-3 z-40">
-    <a href="tel:+254708865910" class="bg-red-500 text-white p-3.5 rounded-full shadow-lg hover:bg-red-600 transition-all hover:scale-110" aria-label="Emergency Call"><i class="fas fa-phone-alt text-xl"></i></a>
-    <a href="#appointment" class="bg-blue-500 text-white p-3.5 rounded-full shadow-lg hover:bg-blue-600 transition-all hover:scale-110" aria-label="Book Appointment"><i class="fas fa-calendar-check text-xl"></i></a>
-    <button onclick="shareLocationForEmergency()" class="bg-green-500 text-white p-3.5 rounded-full shadow-lg hover:bg-green-600 transition-all hover:scale-110" aria-label="Share Location"><i class="fas fa-location-dot text-xl"></i></button>
+    <a href="tel:+254708865910" class="bg-red-500 text-white p-3.5 rounded-full shadow-lg hover:bg-red-600 transition-all hover:scale-110"><i class="fas fa-phone-alt text-xl"></i></a>
+    <a href="#appointment" class="bg-blue-500 text-white p-3.5 rounded-full shadow-lg hover:bg-blue-600 transition-all hover:scale-110"><i class="fas fa-calendar-check text-xl"></i></a>
+    <button onclick="shareLocationForEmergency()" class="bg-green-500 text-white p-3.5 rounded-full shadow-lg hover:bg-green-600 transition-all hover:scale-110"><i class="fas fa-location-dot text-xl"></i></button>
   </div>
 
   <!-- FLOATING WHATSAPP -->
@@ -42,26 +277,17 @@
   </a>
 
   <!-- CHATBOT -->
-  <button id="chatbotToggle" class="fixed bottom-6 left-6 bg-[#0369a1] text-white rounded-full p-4 shadow-2xl z-50 flex items-center justify-center hover:scale-110 transition-all duration-300" aria-label="Open AI Assistant">
+  <button id="chatbotToggle" class="fixed bottom-6 left-6 bg-[#0369a1] text-white rounded-full p-4 shadow-2xl z-50 flex items-center justify-center hover:scale-110 transition-all duration-300">
     <i class="fas fa-comment-dots text-2xl"></i><span class="hidden md:inline ml-2 font-semibold text-sm">AI Assistant</span>
   </button>
 
   <div id="chatbotWindow" class="fixed bottom-24 left-6 w-[95vw] max-w-96 h-[500px] max-h-[70vh] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl z-50 hidden flex-col overflow-hidden border border-gray-200 dark:border-gray-700">
     <div class="bg-gradient-to-r from-[#0369a1] to-[#0284c7] text-white p-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center"><i class="fas fa-robot text-xl"></i></div>
-        <div><span class="font-semibold">Gagra AI Assistant</span><p class="text-xs text-white/70">Online • Replies instantly</p></div>
-      </div>
+      <div class="flex items-center gap-3"><div class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center"><i class="fas fa-robot text-xl"></i></div><div><span class="font-semibold">Gagra AI Assistant</span><p class="text-xs text-white/70">Online • Replies instantly</p></div></div>
       <button id="closeChatbot" class="hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition">✕</button>
     </div>
     <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50 dark:bg-gray-900">
-      <div class="flex justify-start">
-        <div class="chat-message-bot rounded-2xl rounded-tl-none px-4 py-3 max-w-[85%] text-sm leading-relaxed">
-          <p class="font-semibold mb-1">👋 Karibu! Welcome to Gagra Medical Centre.</p>
-          <p>I can help with: Symptom triage, Appointments, Ambulance, SHA/M-Pesa payments (Till 3046560).</p>
-          <p class="mt-2">How can I assist you today?</p>
-        </div>
-      </div>
+      <div class="flex justify-start"><div class="chat-message-bot rounded-2xl rounded-tl-none px-4 py-3 max-w-[85%] text-sm leading-relaxed"><p class="font-semibold mb-1">👋 Karibu! Welcome to Gagra Medical Centre.</p><p>I can help with: Symptom triage, Appointments, Ambulance, SHA/M-Pesa payments (Till 3046560).</p><p class="mt-2">How can I assist you today?</p></div></div>
     </div>
     <div class="p-4 border-t dark:border-gray-700 bg-white dark:bg-gray-800 flex gap-2">
       <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 p-3 rounded-xl border dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#0369a1] text-sm">
@@ -85,11 +311,11 @@
       </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER - Transparent on hero -->
     <header class="absolute top-0 left-0 right-0 z-20 py-4 px-5 md:px-12 flex justify-between items-center text-white">
       <a href="#home" class="flex items-center gap-3 no-underline">
         <div class="h-12 w-12 rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
-          <img src="assets/images/logo.png" alt="Gagra Medical Logo" class="h-full w-full object-cover" onerror="this.src='https://placehold.co/48x48/0369a1/white?text=G'">
+          <img src="https://i.ibb.co/fYLbDv5r/gagra-medical-logo.png" alt="Gagra Medical Logo" class="h-full w-full object-cover">
         </div>
         <div><h1 class="text-xl font-bold">Gagra Medical Centre</h1><p class="text-[10px] text-white/80">"Come Discover Solutions in Healthcare"</p></div>
       </a>
@@ -112,52 +338,58 @@
     </header>
 
     <main id="main-content">
-      <!-- FULLSCREEN HERO SLIDESHOW -->
+      <!-- FULLSCREEN HERO SLIDESHOW - Text inside images like KNH website -->
       <section class="hero-fullscreen">
-        <div class="hero-slide active" style="background-image: linear-gradient(135deg, rgba(0,20,40,0.75) 0%, rgba(0,40,60,0.65) 100%), url('assets/images/consultation-room.jpg');">
+        <!-- Slide 1 - Consultation Room -->
+        <div class="hero-slide active" style="background-image: url('https://i.ibb.co/rKZQH35y/Gemini-Generated-Image-2pzloh2pzloh2pzl.png');">
           <div class="hero-content-overlay">
-            <h1 class="hero-title">Come Discover <span class="text-gradient">Solutions in Healthcare</span></h1>
+            <h1 class="hero-title">Come Discover <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-sky-100">Solutions in Healthcare</span></h1>
             <p class="hero-subtitle">Modern Consultation Rooms • Expert Doctors • Compassionate Care</p>
             <div class="hero-buttons flex flex-wrap gap-4 justify-center">
               <a href="#appointment" class="btn-primary px-8 py-3 rounded-full shadow-xl text-lg font-bold flex items-center gap-2">📅 Book Appointment <i class="fas fa-arrow-right"></i></a>
-              <a href="#contact" class="btn-outline-white px-8 py-3 rounded-full text-lg font-bold">📞 Call Us</a>
+              <a href="#contact" class="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-[#0369a1] transition">📞 Call Us</a>
             </div>
           </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(0,20,40,0.75) 0%, rgba(0,40,60,0.65) 100%), url('assets/images/pharmacy.jpg');">
+        <!-- Slide 2 - Pharmacy -->
+        <div class="hero-slide" style="background-image: url('https://i.ibb.co/2YqgWrkK/gagra-medical-consultation-room.png');">
           <div class="hero-content-overlay">
-            <h1 class="hero-title">24/7 <span class="text-gradient">Pharmacy Services</span></h1>
+            <h1 class="hero-title">24/7 <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-sky-100">Pharmacy Services</span></h1>
             <p class="hero-subtitle">Fully Stocked • Prescription Filling • OTC Medications • M-Pesa Till: 3046560</p>
             <div class="hero-buttons flex flex-wrap gap-4 justify-center">
               <a href="#appointment" class="btn-primary px-8 py-3 rounded-full shadow-xl text-lg font-bold flex items-center gap-2">📅 Book Appointment <i class="fas fa-arrow-right"></i></a>
-              <a href="#contact" class="btn-outline-white px-8 py-3 rounded-full text-lg font-bold">📞 Call Us</a>
+              <a href="#contact" class="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-[#0369a1] transition">📞 Call Us</a>
             </div>
           </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(0,20,40,0.75) 0%, rgba(0,40,60,0.65) 100%), url('assets/images/reception.jpg');">
+        <!-- Slide 3 - Reception -->
+        <div class="hero-slide" style="background-image: url('https://i.ibb.co/Mx1MFbbs/Whats-App-Image-2026-05-04-at-5-28-27-PM.jpg');">
           <div class="hero-content-overlay">
-            <h1 class="hero-title">Warm & <span class="text-gradient">Welcoming Reception</span></h1>
+            <h1 class="hero-title">Warm & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-sky-100">Welcoming Reception</span></h1>
             <p class="hero-subtitle">Friendly Staff • Quick Check-in • SHA Registration Assistance</p>
             <div class="hero-buttons flex flex-wrap gap-4 justify-center">
               <a href="#appointment" class="btn-primary px-8 py-3 rounded-full shadow-xl text-lg font-bold flex items-center gap-2">📅 Book Appointment <i class="fas fa-arrow-right"></i></a>
-              <a href="#contact" class="btn-outline-white px-8 py-3 rounded-full text-lg font-bold">📞 Call Us</a>
+              <a href="#contact" class="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-[#0369a1] transition">📞 Call Us</a>
             </div>
           </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(0,20,40,0.75) 0%, rgba(0,40,60,0.65) 100%), url('assets/images/ward.jpg');">
+        <!-- Slide 4 - Patient Ward -->
+        <div class="hero-slide" style="background-image: url('https://i.ibb.co/KxPPj7zM/Whats-App-Image-2026-05-04-at-5-28-28-PM.jpg');">
           <div class="hero-content-overlay">
-            <h1 class="hero-title">Comfortable <span class="text-gradient">Patient Wards</span></h1>
+            <h1 class="hero-title">Comfortable <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-sky-100">Patient Wards</span></h1>
             <p class="hero-subtitle">Clean • Safe • 24/7 Nursing Care • Affordable Rates</p>
             <div class="hero-buttons flex flex-wrap gap-4 justify-center">
               <a href="#appointment" class="btn-primary px-8 py-3 rounded-full shadow-xl text-lg font-bold flex items-center gap-2">📅 Book Appointment <i class="fas fa-arrow-right"></i></a>
-              <a href="#contact" class="btn-outline-white px-8 py-3 rounded-full text-lg font-bold">📞 Call Us</a>
+              <a href="#contact" class="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-[#0369a1] transition">📞 Call Us</a>
             </div>
           </div>
         </div>
 
+        <!-- Navigation Arrows -->
         <button class="hero-nav hero-prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
         <button class="hero-nav hero-next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
 
+        <!-- Dots -->
         <div class="hero-dots">
           <span class="hero-dot active" data-slide="0"></span>
           <span class="hero-dot" data-slide="1"></span>
@@ -165,6 +397,7 @@
           <span class="hero-dot" data-slide="3"></span>
         </div>
 
+        <!-- Scroll Indicator -->
         <div class="scroll-indicator animate-bounce" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
           <i class="fas fa-chevron-down text-2xl opacity-70"></i>
         </div>
@@ -185,7 +418,7 @@
         </div>
       </section>
 
-      <!-- ABOUT SECTION -->
+      <!-- ABOUT SECTION - Corrected Labels -->
       <section id="about" class="py-20 card-bg">
         <div class="container mx-auto px-5 md:px-12">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -204,10 +437,10 @@
               <a href="#team" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full">Meet Our Team <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-              <div><img class="rounded-2xl shadow-lg h-52 w-full object-cover img-zoom" src="assets/images/consultation-room.jpg" alt="Consultation Room"><p class="text-xs text-center mt-2 text-gray-500">🏥 Consultation Room</p></div>
-              <div><img class="rounded-2xl shadow-lg h-52 w-full object-cover img-zoom mt-6" src="assets/images/pharmacy.jpg" alt="Pharmacy"><p class="text-xs text-center mt-2 text-gray-500">💊 Pharmacy</p></div>
-              <div><img class="rounded-2xl shadow-lg h-48 w-full object-cover img-zoom" src="assets/images/reception.jpg" alt="Reception Area"><p class="text-xs text-center mt-2 text-gray-500">📋 Reception</p></div>
-              <div><img class="rounded-2xl shadow-lg h-48 w-full object-cover img-zoom mt-6" src="assets/images/ward.jpg" alt="Patient Ward"><p class="text-xs text-center mt-2 text-gray-500">🛏️ Patient Ward</p></div>
+              <div><img class="rounded-2xl shadow-lg h-52 w-full object-cover img-zoom" src="https://i.ibb.co/rKZQH35y/Gemini-Generated-Image-2pzloh2pzloh2pzl.png" alt="Consultation Room"><p class="text-xs text-center mt-2 text-gray-500">🏥 Consultation Room</p></div>
+              <div><img class="rounded-2xl shadow-lg h-52 w-full object-cover img-zoom mt-6" src="https://i.ibb.co/2YqgWrkK/gagra-medical-consultation-room.png" alt="Pharmacy"><p class="text-xs text-center mt-2 text-gray-500">💊 Pharmacy</p></div>
+              <div><img class="rounded-2xl shadow-lg h-48 w-full object-cover img-zoom" src="https://i.ibb.co/Mx1MFbbs/Whats-App-Image-2026-05-04-at-5-28-27-PM.jpg" alt="Reception Area"><p class="text-xs text-center mt-2 text-gray-500">📋 Reception</p></div>
+              <div><img class="rounded-2xl shadow-lg h-48 w-full object-cover img-zoom mt-6" src="https://i.ibb.co/KxPPj7zM/Whats-App-Image-2026-05-04-at-5-28-28-PM.jpg" alt="Patient Ward"><p class="text-xs text-center mt-2 text-gray-500">🛏️ Patient Ward</p></div>
             </div>
           </div>
         </div>
@@ -218,10 +451,10 @@
         <div class="container mx-auto px-5 md:px-12">
           <div class="text-center mb-14" data-aos="fade-up"><h2 class="text-4xl font-bold">Meet Our Medical Team</h2><p class="text-gray-500">Experienced & compassionate healthcare professionals</p></div>
           <div class="grid md:grid-cols-4 gap-8">
-            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="assets/images/medical-director.jpg" alt="Dr. Eston Charles Ogeta" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#0369a1]" onerror="this.src='assets/images/logo.png'"><h3 class="text-xl font-bold mt-4">Dr. Eston Charles Ogeta</h3><p class="text-[#0369a1] font-semibold">Medical Director</p></div>
-            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="assets/images/logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#10b981]"><h3 class="text-xl font-bold mt-4">Catherine Othiambo</h3><p class="text-[#10b981] font-semibold">Senior Nursing Officer</p><p class="text-xs text-gray-500 mt-1">8+ Years Experience</p></div>
-            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="assets/images/logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#f59e0b]"><h3 class="text-xl font-bold mt-4">Yvonne Onyango</h3><p class="text-[#f59e0b] font-semibold">Chief Lab Expert</p><p class="text-xs text-gray-500 mt-1">Quality Control Certified</p></div>
-            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="assets/images/logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#8b5cf6]"><h3 class="text-xl font-bold mt-4">Rosemercy A</h3><p class="text-[#8b5cf6] font-semibold">Administrator</p><p class="text-xs text-gray-500 mt-1">SHA & Appointments</p></div>
+            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="https://i.ibb.co/2YHfJ0bF/Gemini-Generated-Image-hcgsjnhcgsjnhcgs.png" alt="Dr. Eston Charles Ogeta" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#0369a1]"><h3 class="text-xl font-bold mt-4">Dr. Eston Charles Ogeta</h3><p class="text-[#0369a1] font-semibold">Medical Director</p></div>
+            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="https://i.ibb.co/fYLbDv5r/gagra-medical-logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#10b981]"><h3 class="text-xl font-bold mt-4">Catherine Othiambo</h3><p class="text-[#10b981] font-semibold">Senior Nursing Officer</p><p class="text-xs text-gray-500 mt-1">8+ Years Experience</p></div>
+            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="https://i.ibb.co/fYLbDv5r/gagra-medical-logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#f59e0b]"><h3 class="text-xl font-bold mt-4">Yvonne Onyango</h3><p class="text-[#f59e0b] font-semibold">Chief Lab Expert</p><p class="text-xs text-gray-500 mt-1">Quality Control Certified</p></div>
+            <div class="card-bg rounded-2xl shadow-lg p-6 text-center team-card"><img src="https://i.ibb.co/fYLbDv5r/gagra-medical-logo.png" alt="Gagra Medical" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#8b5cf6]"><h3 class="text-xl font-bold mt-4">Rosemercy A</h3><p class="text-[#8b5cf6] font-semibold">Administrator</p><p class="text-xs text-gray-500 mt-1">SHA & Appointments</p></div>
           </div>
         </div>
       </section>
@@ -244,9 +477,9 @@
         <div class="container mx-auto px-5 md:px-12">
           <div class="text-center mb-14" data-aos="fade-up"><h2 class="text-4xl font-bold">Health Blog</h2><p>Practical health advice for our community</p></div>
           <div class="grid md:grid-cols-3 gap-8">
-            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="assets/images/malaria-blog.jpg" alt="Malaria Prevention" class="h-56 w-full object-cover" onerror="this.src='https://placehold.co/600x400/0ea5e9/white?text=Malaria+Prevention'"><div class="p-6"><h3 class="font-bold text-xl">5 Ways to Prevent Malaria in Siaya</h3><p class="text-sm mt-2">Use mosquito nets, clear standing water, seek early treatment. Malaria test only KSh 200.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
-            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="assets/images/homecare-blog.jpg" alt="Home Healthcare" class="h-56 w-full object-cover" onerror="this.src='https://placehold.co/600x400/10b981/white?text=Home+Healthcare'"><div class="p-6"><h3 class="font-bold text-xl">Home Healthcare Guide for Elderly</h3><p class="text-sm mt-2">Our home-based care team visits elderly patients in Uyoma & Rarieda.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
-            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="assets/images/maternal-blog.jpg" alt="Maternal Health" class="h-56 w-full object-cover" onerror="this.src='https://placehold.co/600x400/8b5cf6/white?text=Maternal+Health'"><div class="p-6"><h3 class="font-bold text-xl">Safe Pregnancy & Maternal Health</h3><p class="text-sm mt-2">Antenatal care, nutrition, and warning signs. SHA-accredited MCH services.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
+            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="https://i.ibb.co/DP9xz0Fb/Gemini-Generated-Image-usx7tjusx7tjusx7.png" alt="Malaria Prevention" class="h-56 w-full object-cover"><div class="p-6"><h3 class="font-bold text-xl">5 Ways to Prevent Malaria in Siaya</h3><p class="text-sm mt-2">Use mosquito nets, clear standing water, seek early treatment. Malaria test only KSh 200.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
+            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="https://i.ibb.co/35Nx96pm/Gemini-Generated-Image-1z35391z35391z35.png" alt="Home Healthcare" class="h-56 w-full object-cover"><div class="p-6"><h3 class="font-bold text-xl">Home Healthcare Guide for Elderly</h3><p class="text-sm mt-2">Our home-based care team visits elderly patients in Uyoma & Rarieda.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
+            <article class="card-bg rounded-2xl overflow-hidden shadow-lg blog-card"><img src="https://i.ibb.co/qYCJ52VN/Gemini-Generated-Image-z0my5tz0my5tz0my.png" alt="Maternal Health" class="h-56 w-full object-cover"><div class="p-6"><h3 class="font-bold text-xl">Safe Pregnancy & Maternal Health</h3><p class="text-sm mt-2">Antenatal care, nutrition, and warning signs. SHA-accredited MCH services.</p><a href="#" class="inline-block mt-3 text-[#0369a1] font-semibold">Read More →</a></div></article>
           </div>
         </div>
       </section>
@@ -259,7 +492,7 @@
               <button onclick="shareLocationForEmergency()" class="bg-yellow-400 text-red-800 font-bold px-6 py-3 rounded-full text-lg shadow-lg hover:bg-yellow-300 transition mb-6 flex items-center gap-2"><i class="fas fa-location-dot"></i> Share My Location for Ambulance</button>
               <div class="flex flex-wrap gap-4"><a href="tel:+254708865910" class="bg-white text-red-600 font-bold px-8 py-4 rounded-full text-2xl shadow-2xl">📞 0708 865 910</a></div>
             </div>
-            <div><img src="assets/images/ambulance.jpg" alt="Gagra Ambulance" class="rounded-2xl shadow-2xl w-full border-4 border-white img-zoom" onerror="this.src='https://placehold.co/600x400/red/white?text=🚑+Ambulance'"></div>
+            <div><img src="https://i.ibb.co/r22gfmZc/gagra-medical-ambulance.png" alt="Gagra Ambulance" class="rounded-2xl shadow-2xl w-full border-4 border-white img-zoom"></div>
           </div>
         </div>
       </section>
@@ -270,14 +503,14 @@
           <div class="grid lg:grid-cols-2 gap-10">
             <div><h2 class="text-3xl font-bold mb-6">Contact Information</h2>
               <div class="space-y-4">
-                <div class="flex gap-4"><i class="fas fa-map-marker-alt text-2xl text-[#0369a1]"></i><div><p class="font-bold">Address</p><p>Gagra Madiany Junction, Uyoma, Rarieda, Siaya County, Kenya</p></div></div>
+                <div class="flex gap-4"><i class="fas fa-map-marker-alt text-2xl text-[#0369a1]"></i><div><p class="font-bold">Address</p><p>Gagra Madiany Junction, Uyoma, Rarieda, Siaya County</p></div></div>
                 <div class="flex gap-4"><i class="fas fa-phone-alt text-2xl text-red-500"></i><div><p class="font-bold">Emergency / General</p><p><a href="tel:+254708865910" class="text-red-500 font-bold">0708 865 910</a> | <a href="tel:+254713096598">0713 096598</a> | <a href="tel:+254797860977">0797 860977</a></p></div></div>
                 <div class="flex gap-4"><i class="fas fa-money-bill-wave text-2xl text-green-500"></i><div><p class="font-bold">M-Pesa Till Number</p><p class="text-2xl font-mono font-bold text-green-600">3046560</p></div></div>
                 <div class="flex gap-4"><i class="fas fa-shield-alt text-2xl text-blue-500"></i><div><p class="font-bold">SHA Accreditation</p><p>We accept SHA for consultations, MCH, and lab tests. Bring your SHA card.</p></div></div>
                 <div class="flex gap-4"><i class="fab fa-whatsapp text-2xl text-green-500"></i><div><p class="font-bold">WhatsApp Business</p><a href="https://wa.me/254708865910" class="text-green-500">Click to chat →</a></div></div>
               </div>
             </div>
-            <div><div class="h-[400px] rounded-2xl overflow-hidden shadow-xl"><iframe class="w-full h-full" style="border:0" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.123456789!2d34.2556!3d-0.1989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182e6a2b8e2f9a7b%3A0x8c3f4e2d1a6b9c0d!2sGagra%20Madiany%20Junction!5e0!3m2!1sen!2ske!4v1700000000000" title="Gagra Medical Location Map"></iframe></div></div>
+            <div><div class="h-[400px] rounded-2xl overflow-hidden shadow-xl"><iframe class="w-full h-full" style="border:0" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.123456789!2d34.2556!3d-0.1989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182e6a2b8e2f9a7b%3A0x8c3f4e2d1a6b9c0d!2sGagra%20Madiany%20Junction!5e0!3m2!1sen!2ske!4v1700000000000" title="Gagra Medical Location"></iframe></div></div>
           </div>
         </div>
       </section>
@@ -300,12 +533,109 @@
     </main>
 
     <footer class="bg-[#0f172a] text-gray-300 pt-12 pb-6 text-center">
-      <p>&copy; 2025 Gagra Medical Centre | Gagra Madiany Junction, Uyoma, Rarieda, Siaya County, Kenya | M-Pesa Till: 3046560 | SHA Accredited | 24/7 Emergency: 0708 865 910</p>
-      <p class="text-xs mt-2 text-gray-500">Quality Healthcare Since 2015 | Developed for the Uyoma Community</p>
+      <p>&copy; 2025 Gagra Medical Centre | Gagra Madiany Junction, Uyoma, Rarieda, Siaya County | M-Pesa Till: 3046560 | SHA Accredited | 24/7 Emergency: 0708 865 910</p>
+      <p class="text-xs mt-2 text-gray-500">Quality Healthcare Since 2015</p>
     </footer>
   </div>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    
+    // Fullscreen Hero Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.querySelector('.hero-prev');
+    const nextBtn = document.querySelector('.hero-next');
+    let currentSlide = 0;
+    let slideInterval;
+    
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
+      });
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() { showSlide(currentSlide + 1); resetInterval(); }
+    function prevSlide() { showSlide(currentSlide - 1); resetInterval(); }
+    function resetInterval() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 6000); }
+    
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    dots.forEach((dot, i) => { dot.addEventListener('click', () => { showSlide(i); resetInterval(); }); });
+    
+    slideInterval = setInterval(nextSlide, 6000);
+    
+    // Dark Mode
+    const darkToggle = document.getElementById('darkModeToggle'), darkIcon = document.getElementById('darkModeIcon');
+    if (localStorage.getItem('darkMode') === 'enabled') { document.body.classList.add('dark'); darkIcon?.classList.replace('fa-moon', 'fa-sun'); }
+    darkToggle?.addEventListener('click', () => { document.body.classList.toggle('dark'); const isDark = document.body.classList.contains('dark'); localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled'); darkIcon?.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon'); });
+    
+    // Mobile Menu
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle?.addEventListener('click', () => {
+      if (mobileMenu) mobileMenu.classList.toggle('hidden');
+      else {
+        const menu = document.createElement('div'); menu.id = 'mobileMenu'; menu.className = 'fixed inset-0 bg-black/95 z-50 p-6'; menu.innerHTML = '<div class="flex flex-col gap-4 text-white text-xl"><a href="#home" class="py-3">Home</a><a href="#about" class="py-3">About</a><a href="#team" class="py-3">Our Team</a><a href="#services" class="py-3">Services</a><a href="#blog" class="py-3">Blog</a><a href="#ambulance" class="py-3">Emergency</a><a href="#contact" class="py-3">Contact</a><a href="#appointment" class="btn-primary text-center py-3 rounded-full mt-4">📅 Book Appointment</a><button onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-2xl">✕</button></div>';
+        document.body.appendChild(menu);
+      }
+    });
+    
+    // Emergency Location Share
+    window.shareLocationForEmergency = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          const lat = pos.coords.latitude, lng = pos.coords.longitude;
+          window.open(`https://wa.me/254708865910?text=🚨 EMERGENCY! Send ambulance to: https://maps.google.com/?q=${lat},${lng}`, '_blank');
+          showToast("📍 Location shared! Opening WhatsApp...");
+        }, () => showToast("❌ Could not get location. Please call 0708 865 910 directly."));
+      } else { showToast("❌ Geolocation not supported. Please call 0708 865 910."); }
+    };
+    
+    function showToast(msg) { const t = document.createElement('div'); t.className = 'toast-notification'; t.innerHTML = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 3000); }
+    
+    // WhatsApp Booking Form
+    const bookingForm = document.getElementById('bookingForm');
+    bookingForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('bookingName').value.trim();
+      const phone = document.getElementById('bookingPhone').value.trim();
+      const service = document.getElementById('bookingService').value;
+      const notes = document.getElementById('bookingNotes').value.trim();
+      if (!name || !phone) { showToast("❌ Please enter your name and phone number"); return; }
+      const message = `🏥 *Gagra Medical Appointment* 🏥%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'None'}%0A%0A📍 Location: Gagra Madiany Junction%0A⏰ Please confirm availability`;
+      window.open(`https://wa.me/254708865910?text=${message}`, '_blank');
+      showToast("📱 Opening WhatsApp... Send the message to confirm!");
+      bookingForm.reset();
+    });
+    
+    // Chatbot
+    const chatbotWin = document.getElementById('chatbotWindow'), chatMsgs = document.getElementById('chatMessages'), chatInput = document.getElementById('chatInput'), sendBtn = document.getElementById('sendChat');
+    window.openChatbot = () => { chatbotWin?.classList.remove('hidden'); chatInput?.focus(); };
+    document.getElementById('chatbotToggle')?.addEventListener('click', () => { chatbotWin.classList.toggle('hidden'); if (!chatbotWin.classList.contains('hidden')) chatInput?.focus(); });
+    document.getElementById('closeChatbot')?.addEventListener('click', () => chatbotWin.classList.add('hidden'));
+    
+    function getBotResponse(msg) {
+      const m = msg.toLowerCase();
+      if (m.includes('chest pain') || m.includes('difficulty breathing')) return "⚠️ URGENT: Call emergency 0708 865 910 immediately!";
+      if (m.includes('fever') || m.includes('malaria')) return "🌡️ Get a malaria test (KSh 200). Visit Gagra Medical or request a home visit.";
+      if (m.includes('price') || m.includes('cost')) return "💰 Consultation: KSh 500 | Home Care: KSh 1,000 | Malaria Test: KSh 200. M-Pesa Till: 3046560";
+      if (m.includes('mpesa')) return "💵 M-Pesa Till Number: 3046560. Steps: Lipa Na M-Pesa → Buy Goods → Enter 3046560";
+      if (m.includes('sha')) return "✅ We accept SHA (Social Health Authority). Bring your SHA card.";
+      if (m.includes('location')) return "📍 Gagra Madiany Junction, Uyoma, Rarieda. <a href='#contact' class='underline'>View map</a>";
+      return "👋 For help call 0708 865 910. M-Pesa Till: 3046560. SHA accepted. How can I assist?";
+    }
+    
+    function addChatMessage(text, isUser) { const div = document.createElement('div'); div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} fade-in-up`; div.innerHTML = `<div class="${isUser ? 'chat-message-user' : 'chat-message-bot'} rounded-2xl px-4 py-3 max-w-[85%] text-sm">${text}</div>`; chatMsgs.appendChild(div); chatMsgs.scrollTop = chatMsgs.scrollHeight; }
+    sendBtn?.addEventListener('click', () => { const msg = chatInput.value.trim(); if (!msg) return; addChatMessage(msg, true); chatInput.value = ''; setTimeout(() => addChatMessage(getBotResponse(msg), false), 400); });
+    chatInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendBtn?.click(); });
+    
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { const href = this.getAttribute('href'); if (href === '#') return; e.preventDefault(); const t = document.querySelector(href); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' }); }));
+  </script>
 </body>
 </html>
